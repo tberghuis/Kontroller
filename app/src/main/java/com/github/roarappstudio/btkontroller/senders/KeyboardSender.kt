@@ -13,6 +13,8 @@ open class KeyboardSender(
 ) {
     val keyboardReport = KeyboardReport()
     protected open fun sendKeys() {
+        Log.d(TAG, "keyboardReport.bytes ${keyboardReport.bytes[0]} ${keyboardReport.bytes[1]} ${keyboardReport.bytes[2]}")
+
         if (!hidDevice.sendReport(host, KeyboardReport.ID, keyboardReport.bytes)) {
             Log.e(TAG, "Report wasn't sent")
         }
